@@ -1,0 +1,64 @@
+# FMS-FSDI
+
+Code relaese for [Fusing Multi-Scale Frequency and Spatial Domain Information for Few-Shot Fine-Grained Image Classification]
+
+## Code environment
+
+* You can create a conda environment with the correct dependencies using the following command lines:
+
+  ```shell
+  conda env create -f environment.yml
+  conda activate FMSFSDI
+  ```
+
+## Dataset
+You can download CUB_200_2011, cars, dogs, iNaturalist2017, and mini-ImageNet using following URL.
+- CUB_200_2011 \[[Download Link](https://drive.google.com/file/d/1WxDB3g3U_SrF2sv-DmFYl8LS0p_wAowh/view)\]
+- cars \[[Download Link](https://drive.google.com/file/d/1ImEPQH5gHpSE_Mlq8bRvxxcUXOwdHIeF/view?usp=drive_link)\]
+- dogs \[[Download Link](https://drive.google.com/file/d/13avzK22oatJmtuyK0LlShWli00NsF6N0/view?usp=drive_link)\]
+- iNaturalist2017 \[[Dataset Page](https://github.com/visipedia/inat_comp/tree/master/2017), [Download Data](https://ml-inat-competition-datasets.s3.amazonaws.com/2017/train_val_images.tar.gz), [Download Annotations](https://ml-inat-competition-datasets.s3.amazonaws.com/2017/train_2017_bboxes.zip)\]
+- mini-ImageNet \[[Dataset Page](https://github.com/twitter/meta-learning-lstm), [Download Link](https://drive.google.com/file/d/0B3Irx3uQNoBMQ1FlNXJsZUdYWEE/view)\]
+
+The preprocessing of these datasets is the same as [FRN](https://github.com/Tsingularity/FRN), but the categories  of train, val,
+and test follows /datasetsplit/cub.txt, /datasetsplit/car.txt, /datasetsplit/dog.txt, and /datasetsplit/cross_domain.txt.
+
+Under each folder, images are organized into train, val, and test. In addition, you may also find folders named val_pre and test_pre, which contain validation and testing
+images pre-sized to 84x84 for the sake of speed.
+
+## Train
+
+* To train FMS-FSDI on `CUB_fewshot_raw` with Conv-4 backbone under the 1/5-shot setting, run the following command lines:
+
+  ```shell
+  cd experiments/CUB_fewshot_raw/Conv-4
+  ./train.sh
+  ```
+
+* For ResNet-12 backbone, run the following command lines:
+
+  ```shell
+  cd experiments/CUB_fewshot_raw/ResNet-12
+  ./train.sh
+  ```
+
+## Test
+
+```shell
+    cd experiments/CUB_fewshot_raw/Conv-4
+    python ./test.py
+
+    cd experiments/CUB_fewshot_raw/ResNet-12
+    python ./test.py
+```
+All model weights are placed in /FMS-FSDI/trained_model_weights.
+
+## References
+
+Thanks to  [Davis](https://github.com/Tsingularity/FRN), and  [Chi](https://github.com/pkumivision/FFC), for the preliminary implementations.
+
+## Contact
+
+Thanks for your attention!
+If you have any suggestion or question, you can leave a message here or contact us directly:
+- wushanj2023@163.com
+- hujun@cqupt.edu.cn
