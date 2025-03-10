@@ -54,7 +54,7 @@ All model weights are placed in /FMS-FSDI/trained_model_weights.
 
 ## References
 
-Thanks to  [Davis](https://github.com/Tsingularity/FRN), and  [Chi](https://github.com/pkumivision/FFC), for the preliminary implementations.
+Thanks to  [Davis](https://github.com/Tsingularity/FRN), [Ma] ( https://dl.acm.org/doi/abs/10.1145/3664647.3680593), and  [Chi](https://github.com/pkumivision/FFC), for the preliminary implementations.
 
 ## Contact
 
