@@ -17,7 +17,7 @@ class BasicConv(nn.Module):
             x = self.elu(x)
         return x
 
-# 1x1 con block
+# 1x1 conv block
 class Conv1x1Block(nn.Module):
     def __init__(self,in_c,out_c):
         super(Conv1x1Block, self).__init__()
