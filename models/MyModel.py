@@ -21,7 +21,7 @@ class FMSFSDI(nn.Module):
             l3_channel = 64
             last_channel = 64
 
-        self.feature_extractor = SMS3F(resnet,ffc,enable_lfu)
+        self.sms3f_extractor = SMS3F(resnet,ffc,enable_lfu)
 
         self.shots = shots
         self.way = way
@@ -51,7 +51,7 @@ class FMSFSDI(nn.Module):
     def get_feature_map(self, inp):
 
         batch_size = inp.size(0)
-        l2_xl_xg,l3_xl_xg,l4 = self.feature_extractor(inp)
+        l2_xl_xg,l3_xl_xg,l4 = self.sms3f_extractor(inp)
         if self.resnet:
             l2_xl_xg = l2_xl_xg/np.sqrt(160)
             l3_xl_xg = l3_xl_xg/np.sqrt(320)
