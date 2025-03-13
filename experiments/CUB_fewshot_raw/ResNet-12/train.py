@@ -26,7 +26,7 @@ train_loader = dataloaders.meta_train_dataloader(data_path=pm.train,
 
 model = FMSFSDI(way=train_way,
             shots=[args.train_shot, args.train_query_shot],
-            resnet=args.resnet)
+            resnet=args.resnet,ffc=args.ffc,enable_lfu=args.enable_lfu)
 
 train_func = partial(fmsfsdi_train.default_train,train_loader=train_loader)
 
