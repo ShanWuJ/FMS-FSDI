@@ -18,7 +18,7 @@ model_path = '../../../trained_model_weights/car_Conv4.pth'
 gpu = 0
 torch.cuda.set_device(gpu)
 
-model = FMSFSDI(resnet=True)
+model = FMSFSDI(resnet=False,ffc=True,enable_lfu=True)
 model.cuda()
 model.load_state_dict(torch.load(model_path,map_location=util.get_device_map(gpu)),strict=True)
 model.eval()
