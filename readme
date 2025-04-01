@@ -50,7 +50,6 @@ images pre-sized to 84x84 for the sake of speed.
     cd experiments/CUB_fewshot_raw/ResNet-12
     python ./test.py
 ```
-All model weights are placed in /FMS-FSDI/trained_model_weights.
 
 ## References
 
