@@ -8,10 +8,10 @@ class JPESM(nn.Module):
         super(JPESM, self).__init__()
         if resnet:
             self.num_channel = 640
-            self.TG_prompt = nn.Parameter(torch.randn((1, self.num_channel, 5, 5)))   # 这里就是那个TG_prompt  MK
+            self.BS_prompt = nn.Parameter(torch.randn((1, self.num_channel, 5, 5)))   
         else:
             self.num_channel = 64
-            self.TG_prompt = nn.Parameter(torch.randn((1, self.num_channel, 5, 5)))
+            self.BS_prompt = nn.Parameter(torch.randn((1, self.num_channel, 5, 5)))
 
         assert kernel_size in (3, 7), 'kernel size must be 3 or 7'
         padding = 3 if kernel_size == 7 else 1
@@ -20,7 +20,7 @@ class JPESM(nn.Module):
         self.conv =BasicConv(self.num_channel, self.num_channel, kernel_size=3, stride=1, padding=1)
 
     def forward(self, s):
-        pt_s = s + self.TG_prompt
+        pt_s = s + self.BS_prompt
         avg_out = torch.mean(pt_s, dim=1, keepdim=True)
         max_out, _ = torch.max(pt_s, dim=1, keepdim=True)
         att = torch.cat([avg_out, max_out], dim=1)
